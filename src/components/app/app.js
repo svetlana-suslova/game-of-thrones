@@ -4,9 +4,14 @@ import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
 import ItemList from '../itemList/itemList';
 import CharDetails from '../charDetails/charDetails';
+import GotService from '../../services/gotService';
 
 
 const App = () => {
+    
+const example = new GotService();
+console.log(example.getAllHouses());
+
     return (
         <> 
             <Container>
