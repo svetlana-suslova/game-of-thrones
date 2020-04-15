@@ -37,17 +37,33 @@ export default class RandomChar extends Component {
 
     render() {
         const { char, loading, error } = this.state;
+        const {onRandomCharToogle, randomCharVisible} = this.props;
+        let classes = "random-block rounded";
+        let buttonText = "Hide Random Character";
+        
+        if (!randomCharVisible) {
+            buttonText = "Show Random Character";
+            classes += " hidden";
+        }
+
         const spinner = loading ? <Spinner/> : null;
         const errorMessage = error ? <ErrorMessage/> : null;
         const content = !( loading || error ) ? <View char={char}/> : null;
 
         return (
-            <div className="random-block rounded">
+            <>
+                <butoon 
+                type="button"
+                className="btn random-char-btn"
+                onClick={onRandomCharToogle}>{buttonText}
+                </butoon>
+                <div className={classes}>
                    {spinner}
                    {errorMessage}
                    {content}
-            </div>
-        );
+                </div>    
+            </>   
+        )
     }
 }
 
@@ -55,7 +71,7 @@ const View = ({char}) => {
     const { name, gender, born, died, culture } = char;
     return (
         <>
-            <h4>Random Character: {name}</h4>
+            <h4>{name}</h4>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item d-flex justify-content-between">
                     <span className="term">Gender </span>
