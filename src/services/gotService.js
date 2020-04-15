@@ -21,19 +21,19 @@ export default class GotService {
     }
     async getAllBooks() {
         const books = await this.getResource('/books');
-        return books.map(this._transformCharacter);
+        return books.map(this._transformBook);
     }
     async getBook(id) {
         const book = await this.getResource(`/books/${id}`);
-        return this._transformCharacter(book);
+        return this._transformBook(book);
     }
     async getAllHouses() {
         const houses = await this.getResource('/houses');
-        return houses.map(this._transformCharacter);
+        return houses.map(this._transformHouse);
     }
     async getHouse(id) {
         const house = await this.getResource(`/houses/${id}`);
-        return this._transformCharacter(house);
+        return this._transformHouse(house);
     }
 
     _transformCharacter(char) {
