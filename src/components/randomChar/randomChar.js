@@ -52,11 +52,11 @@ export default class RandomChar extends Component {
 
         return (
             <>
-                <butoon 
+                <button 
                 type="button"
                 className="btn random-char-btn"
                 onClick={onRandomCharToogle}>{buttonText}
-                </butoon>
+                </button>
                 <div className={classes}>
                    {spinner}
                    {errorMessage}
