@@ -5,6 +5,12 @@ import ErrorMessage from '../errorMessage/errorMessage';
 import './randomChar.sass';
 
 export default class RandomChar extends Component {
+    gotService = new gotService();
+    state = {
+        char: {},
+        loading: true,
+        error: false
+    }
     componentDidMount() {
         this.updateChar();
         this.timerId = setInterval(this.updateChar, 1500); 
@@ -13,12 +19,6 @@ export default class RandomChar extends Component {
         clearInterval(this.timerId); 
     }
 
-    gotService = new gotService();
-    state = {
-        char: {},
-        loading: true,
-        error: false
-    }
     onCharLoaded = (char) => {
         this.setState({
             char,

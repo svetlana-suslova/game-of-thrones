@@ -8,7 +8,7 @@ import './characterPage.sass';
 
 export default class CharacterPage extends Component {
     state = {
-        selectedChar : 130,
+        selectedChar : null,
         error: false
     }
     componentDidCatch() {
