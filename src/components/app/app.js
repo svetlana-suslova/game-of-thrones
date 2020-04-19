@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
-import ItemList from '../itemList/itemList';
-import CharDetails from '../charDetails/charDetails';
+import CharacterPage from '../characterPage/characterPage';
 import ErrorMessage from '../errorMessage/errorMessage';
 
 import './app.sass';
@@ -11,7 +10,12 @@ import './app.sass';
 export default class App extends Component {
     state = {
         randomCharVisible: true,
-        selectedChar: 130
+        error: false
+    }
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
     }
 
     onRandomCharToogle = () => {
@@ -21,15 +25,12 @@ export default class App extends Component {
             }
         })
     }
-
-    onCharSelected = (id) => {
-        this.setState({
-            selectedChar: id
-        })
-    }
     
     render () {
-        const {randomCharVisible, selectedChar} = this.state;
+        const {randomCharVisible, error} = this.state;
+        if (error) {
+            return <ErrorMessage/>
+        }
         let buttonText = "Hide Random Character";
         if (!randomCharVisible) {
             buttonText = "Show Random Character";
@@ -52,14 +53,7 @@ export default class App extends Component {
                         {char}
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onCharSelected={this.onCharSelected}/>
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={selectedChar}/>
-                        </Col>
-                    </Row>
+                    <CharacterPage/>
                 </Container>
             </>
         )
