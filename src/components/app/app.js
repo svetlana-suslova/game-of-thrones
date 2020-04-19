@@ -5,6 +5,8 @@ import RandomChar from '../randomChar/randomChar';
 import ItemList from '../itemList/itemList';
 import CharDetails from '../charDetails/charDetails';
 
+import './app.sass';
+
 export default class App extends Component {
     state = {
         randomCharVisible: true
@@ -19,7 +21,13 @@ export default class App extends Component {
     }
     
     render () {
-        const {randomCharVisible} = this.state; 
+        const {randomCharVisible} = this.state;
+        let buttonText = "Hide Random Character";
+        if (!randomCharVisible) {
+            buttonText = "Show Random Character";
+        }
+        const char = randomCharVisible ? <RandomChar/> : null;
+        
         return (
             <> 
                 <Container>
@@ -27,9 +35,13 @@ export default class App extends Component {
                 </Container>
                 <Container>
                     <Row>
-                        <Col lg={{size: 5, offset: 0}}>
-                            <RandomChar randomCharVisible={randomCharVisible} 
-                            onRandomCharToogle={this.onRandomCharToogle}/>
+                        <Col lg={{size: 5, offset: 0}} className="random-char-block">
+                        <button 
+                            type="button"
+                            className="btn random-char-btn"
+                            onClick={this.onRandomCharToogle}>{buttonText}
+                        </button>
+                        {char}
                         </Col>
                     </Row>
                     <Row>

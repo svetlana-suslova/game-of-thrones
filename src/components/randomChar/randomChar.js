@@ -6,12 +6,10 @@ import './randomChar.sass';
 
 export default class RandomChar extends Component {
     componentDidMount() {
-        console.log('mounting');
         this.updateChar();
-        this.timerId = setInterval(this.updateChar, 3500); 
+        this.timerId = setInterval(this.updateChar, 1500); 
     }
     componentWillUnmount() {
-        console.log('unmounting');
         clearInterval(this.timerId); 
     }
 
@@ -34,7 +32,6 @@ export default class RandomChar extends Component {
         })
     }
     updateChar = () => {
-        console.log('update');
         const id = Math.floor(Math.random() * 140 + 25);
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
@@ -42,34 +39,18 @@ export default class RandomChar extends Component {
     }
 
     render() {
-        console.log('render'); 
         const { char, loading, error } = this.state;
-        const {onRandomCharToogle, randomCharVisible} = this.props;
-        let classes = "random-block rounded";
-        let buttonText = "Hide Random Character";
-        
-        if (!randomCharVisible) {
-            buttonText = "Show Random Character";
-            classes += " hidden";
-        }
-
+    
         const spinner = loading ? <Spinner/> : null;
         const errorMessage = error ? <ErrorMessage/> : null;
         const content = !( loading || error ) ? <View char={char}/> : null;
 
         return (
-            <>
-                <button 
-                type="button"
-                className="btn random-char-btn"
-                onClick={onRandomCharToogle}>{buttonText}
-                </button>
-                <div className={classes}>
-                   {spinner}
-                   {errorMessage}
-                   {content}
-                </div>    
-            </>   
+            <div className="random-block rounded">
+                {spinner}
+                {errorMessage}
+                {content}
+            </div>   
         )
     }
 }
