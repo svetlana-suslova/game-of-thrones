@@ -4,12 +4,14 @@ import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
 import ItemList from '../itemList/itemList';
 import CharDetails from '../charDetails/charDetails';
+import ErrorMessage from '../errorMessage/errorMessage';
 
 import './app.sass';
 
 export default class App extends Component {
     state = {
-        randomCharVisible: true
+        randomCharVisible: true,
+        selectedChar: 130
     }
 
     onRandomCharToogle = () => {
@@ -19,9 +21,15 @@ export default class App extends Component {
             }
         })
     }
+
+    onCharSelected = (id) => {
+        this.setState({
+            selectedChar: id
+        })
+    }
     
     render () {
-        const {randomCharVisible} = this.state;
+        const {randomCharVisible, selectedChar} = this.state;
         let buttonText = "Hide Random Character";
         if (!randomCharVisible) {
             buttonText = "Show Random Character";
@@ -46,10 +54,10 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onCharSelected={this.onCharSelected}/>
                         </Col>
                         <Col md='6'>
-                            <CharDetails />
+                            <CharDetails charId={selectedChar}/>
                         </Col>
                     </Row>
                 </Container>
