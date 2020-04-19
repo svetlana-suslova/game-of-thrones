@@ -5,9 +5,14 @@ import ErrorMessage from '../errorMessage/errorMessage';
 import './randomChar.sass';
 
 export default class RandomChar extends Component {
-    constructor() {
-        super();
+    componentDidMount() {
+        console.log('mounting');
         this.updateChar();
+        this.timerId = setInterval(this.updateChar, 3500); 
+    }
+    componentWillUnmount() {
+        console.log('unmounting');
+        clearInterval(this.timerId); 
     }
 
     gotService = new gotService();
@@ -28,7 +33,8 @@ export default class RandomChar extends Component {
             loading: false
         })
     }
-    updateChar() {
+    updateChar = () => {
+        console.log('update');
         const id = Math.floor(Math.random() * 140 + 25);
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
@@ -36,6 +42,7 @@ export default class RandomChar extends Component {
     }
 
     render() {
+        console.log('render'); 
         const { char, loading, error } = this.state;
         const {onRandomCharToogle, randomCharVisible} = this.props;
         let classes = "random-block rounded";
