@@ -12,7 +12,7 @@ export default class GotService {
         return await res.json();
     }
     async getAllCharacters() {
-        const characters = await this.getResource('/characters?page=6&pageSize=10');
+        const characters = await this.getResource('/characters?page=6&pageSize=7');
         return characters.map(this._transformCharacters);
     }
     async getCharacter(id) {
@@ -37,16 +37,14 @@ export default class GotService {
     }
 
     isEmpty(str) {
-        console.log("hfhfh");
         if (str.trim() === '') 
-          return "no data :((";
-          
+          return "no data :("; 
         return str;
     }
 
     _transformCharacter(char) {
         return {
-            name: this.isEmpty(char.name),
+            name: char.name,
             gender: this.isEmpty(char.gender),
             born: this.isEmpty(char.born),
             died: this.isEmpty(char.died),
