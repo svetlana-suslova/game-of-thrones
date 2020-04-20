@@ -36,7 +36,6 @@ export default class CharacterPage extends Component {
                     <CharDetails charId={selectedChar}/>
                 </Col>
             </Row>
-
         )   
     }
 }
