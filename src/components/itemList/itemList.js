@@ -3,11 +3,14 @@ import gotService from '../../services/gotService';
 import Spinner from '../spinner/spinner';
 
 import './itemList.sass';
+import ErrorMessage from '../errorMessage/errorMessage';
 export default class ItemList extends Component {
     gotService = new gotService();
 
     state = {
-        charList: null
+        charList: null,
+        loading: true,
+        error: false
     }
     componentDidMount() {
         this.gotService.getAllCharacters()
@@ -16,6 +19,14 @@ export default class ItemList extends Component {
                     charList
                 })
             })
+            .catch(this.onError);
+    }
+
+    onError = () => {
+        this.setState({
+            error: true,
+            loading: false
+        })
     }
 
     renderItems(arr) {
@@ -33,10 +44,13 @@ export default class ItemList extends Component {
     }
 
     render() {
-        const {charList} = this.state;
+        const {charList, loading, error} = this.state;
 
-        if (!charList) {
+        if (!charList && loading) {
             return <Spinner/>
+        }
+        if (error) {
+            return <ErrorMessage/>
         }
 
         const items = this.renderItems(charList);

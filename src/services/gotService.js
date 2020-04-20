@@ -12,7 +12,7 @@ export default class GotService {
         return await res.json();
     }
     async getAllCharacters() {
-        const characters = await this.getResource('/characters?page=6&pageSize=10');
+        const characters = await this.getResource('/characters?page=6&pageSize=7');
         return characters.map(this._transformCharacter);
     }
     async getCharacter(id) {
