@@ -12,8 +12,8 @@ export default class GotService {
         return await res.json();
     }
     async getAllCharacters() {
-        const characters = await this.getResource('/characters?page=6&pageSize=7');
-        return characters.map(this._transformCharacter);
+        const characters = await this.getResource('/characters?page=6&pageSize=10');
+        return characters.map(this._transformCharacters);
     }
     async getCharacter(id) {
         const character = await this.getResource(`/characters/${id}`);
@@ -36,7 +36,24 @@ export default class GotService {
         return this._transformHouse(house);
     }
 
+    isEmpty(str) {
+        console.log("hfhfh");
+        if (str.trim() === '') 
+          return "no data :((";
+          
+        return str;
+    }
+
     _transformCharacter(char) {
+        return {
+            name: this.isEmpty(char.name),
+            gender: this.isEmpty(char.gender),
+            born: this.isEmpty(char.born),
+            died: this.isEmpty(char.died),
+            culture: this.isEmpty(char.culture)
+        }
+    }
+    _transformCharacters(char) {
         return {
             id: char.url.substring(49),
             name: char.name,
