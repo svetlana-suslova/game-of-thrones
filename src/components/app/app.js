@@ -4,10 +4,15 @@ import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
 import CharacterPage from '../characterPage/characterPage';
 import ErrorMessage from '../errorMessage/errorMessage';
+import ItemList from '../itemList/itemList';
+import CharDetails from '../charDetails/charDetails';
+import gotService from '../../services/gotService';
 
 import './app.sass';
 
 export default class App extends Component {
+    gotService = new gotService();
+
     state = {
         randomCharVisible: true,
         error: false
