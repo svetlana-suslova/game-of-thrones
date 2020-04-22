@@ -38,9 +38,9 @@ export default class BookPage extends Component {
                 itemId={selectedBook}
                 itemLabel={"book"}
                 getData={ () => this.gotService.getBook(selectedBook) }>
-                <Field field='numberOfPages' label='Number of Pages'/>
+                <Field field='numberOfPages' label='Pages'/>
                 <Field field='publisher' label='Publisher'/>
-                <Field field='released' label='Released'/>
+                <Field field='released' label='Release Year'/>
             </ItemDetails>
         )
         return (

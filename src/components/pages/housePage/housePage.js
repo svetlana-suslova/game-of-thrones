@@ -40,8 +40,7 @@ export default class HousePage extends Component {
                 getData={ () => this.gotService.getHouse(selectedHouse) }>
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>
-                <Field field='overlord' label='Overlord'/>
-                <Field field='ancestralWeapons' label='Ancestral Weapons'/>
+                <Field field='coatOfArms' label='Coat of Arms'/>
             </ItemDetails>
         )
         return (

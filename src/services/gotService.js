@@ -20,7 +20,7 @@ export default class GotService {
         return this._transformCharacter(character);
     }
     getAllBooks = async () => {
-        const books = await this.getResource('/books');
+        const books = await this.getResource('/books?pageSize=7');
         return books.map(this._transformBook);
     }
     getBook = async (id) => {
@@ -28,7 +28,7 @@ export default class GotService {
         return this._transformBook(book);
     }
     getAllHouses = async () => {
-        const houses = await this.getResource('/houses');
+        const houses = await this.getResource('/houses?page=2&pageSize=7');
         return houses.map(this._transformHouse);
     }
     getHouse = async (id) => {
@@ -46,6 +46,7 @@ export default class GotService {
         const idRegExp = /\/([0-9]*)$/;
         return item.url.match(idRegExp)[1];
     }
+
     _transformCharacter = (char) => {
         return {
             id: this._extractId(char),
@@ -62,7 +63,7 @@ export default class GotService {
             name: this.isSet(book.name),
             numberOfPages: this.isSet(book.numberOfPages),
             publisher: this.isSet(book.publisher),
-            released: this.isSet(book.released)
+            released: this.isSet(book.released).substring(0, 4)
         }
     }
     _transformHouse = (house) => {
@@ -71,8 +72,7 @@ export default class GotService {
             name: this.isSet(house.name),
             region: this.isSet(house.region),
             words: this.isSet(house.words),
-            overlord: this.isSet(house.overlord),
-            ancestralWeapons: this.isSet(house.ancestralWeapons)
+            coatOfArms: this.isSet(house.coatOfArms)
         }
     }
 }
