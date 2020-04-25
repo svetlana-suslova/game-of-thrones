@@ -5,6 +5,7 @@ import RandomChar from '../randomChar/randomChar';
 import CharacterPage from '../pages/characterPage/characterPage';
 import HousePage from '../pages/housePage/housePage';
 import BookPage from '../pages/bookPage/bookPage';
+import BookItemPage from '../pages/bookitemPage/bookItemPage';
 import ErrorMessage from '../errorMessage/errorMessage';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -60,7 +61,12 @@ export default class App extends Component {
                         </Row>
                         <Route path='/characters' component={CharacterPage}/>
                         <Route path='/houses' component={HousePage}/>
-                        <Route path='/books' component={BookPage}/>
+                        <Route path='/books' exact component={BookPage}/>
+                        <Route path='/books/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                            return <BookItemPage bookId={id} />}
+                        }/>
                     </Container>
                 </>
             </Router>
