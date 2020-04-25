@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ItemDetails, {Field} from '../../itemDetails/itemDetails';
 import gotService from '../../../services/gotService';
 
-export default class BookPage extends Component {
+export default class BookItemPage extends Component {
     gotService = new gotService();
 
     render () {
