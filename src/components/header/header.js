@@ -7,11 +7,11 @@ import './header.sass';
 const Header = () => {
     return (
         <div className='header-block'>
-            <h3>
+            <h4 className="header-label">
                 <Link to='/'>
-                Game of Thrones DB
+                Game of Thrones
                 </Link>
-            </h3>
+            </h4>
             <div className='header-link'>
                 <li>
                     <Link to='/characters/'>Characters</Link>

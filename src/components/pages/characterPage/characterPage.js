@@ -4,9 +4,6 @@ import ItemDetails, {Field} from '../../itemDetails/itemDetails';
 import ErrorMessage from '../../errorMessage/errorMessage';
 import gotService from '../../../services/gotService';
 import RowBlock from '../../rowBlock/rowBlock';
-
-import './characterPage.sass';
-
 export default class CharacterPage extends Component {
     gotService = new gotService();
     state = {
@@ -33,12 +30,12 @@ export default class CharacterPage extends Component {
             <ItemList 
                 onItemSelected={this.onCharSelected}
                 getData={this.gotService.getAllCharacters}
-                renderItem={ ({name, gender}) => `${name} ${gender}` }/>
+                renderItem={ ({name}) => name}/>
         )
         const itemDetails = (
             <ItemDetails 
                 itemId={selectedChar}
-                itemLabel={"character"}
+                itemLabel={"Please select a character"}
                 getData={ () => this.gotService.getCharacter(selectedChar) }>
                 <Field field='gender' label='Gender'/>
                 <Field field='born' label='Born'/>

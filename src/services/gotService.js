@@ -12,7 +12,7 @@ export default class GotService {
         return await res.json();
     }
     getAllCharacters = async () => {
-        const characters = await this.getResource('/characters?page=6&pageSize=7');
+        const characters = await this.getResource('/characters?page=6&pageSize=6');
         return characters.map(this._transformCharacter);
     }
     getCharacter = async (id) => {
@@ -20,7 +20,7 @@ export default class GotService {
         return this._transformCharacter(character);
     }
     getAllBooks = async () => {
-        const books = await this.getResource('/books?pageSize=7');
+        const books = await this.getResource('/books?pageSize=6');
         return books.map(this._transformBook);
     }
     getBook = async (id) => {
@@ -28,7 +28,7 @@ export default class GotService {
         return this._transformBook(book);
     }
     getAllHouses = async () => {
-        const houses = await this.getResource('/houses?page=2&pageSize=7');
+        const houses = await this.getResource('/houses?page=2&pageSize=6');
         return houses.map(this._transformHouse);
     }
     getHouse = async (id) => {

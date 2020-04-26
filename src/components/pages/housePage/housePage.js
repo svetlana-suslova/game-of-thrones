@@ -36,7 +36,7 @@ export default class HousePage extends Component {
         const itemDetails = (
             <ItemDetails 
                 itemId={selectedHouse}
-                itemLabel={"house"}
+                itemLabel={"Please select a house"}
                 getData={ () => this.gotService.getHouse(selectedHouse) }>
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>

@@ -14,7 +14,7 @@ import './app.sass';
 export default class App extends Component {
 
     state = {
-        randomCharVisible: true,
+        randomCharVisible: false,
         error: false
     }
     componentDidCatch() {
@@ -53,7 +53,7 @@ export default class App extends Component {
                             <Col lg={{size: 5, offset: 0}} className="random-char-block">
                             <button 
                                 type="button"
-                                className="btn random-char-btn"
+                                className="btn main-btn"
                                 onClick={this.onRandomCharToogle}>{buttonText}
                             </button>
                             {char}

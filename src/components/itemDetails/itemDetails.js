@@ -54,7 +54,7 @@ export default class ItemDetails extends Component {
         const { item, loading, error } = this.state;
         const {itemLabel} = this.props;
         if (!item) {
-            return <span className="select-error">{`Please select a ${itemLabel}`}</span>
+            return <span className="select-error">{itemLabel}</span>
         }
     
         let spinner = loading ? <Spinner/> : null;
