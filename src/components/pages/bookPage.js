@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
-import ItemList from '../../itemList/itemList';
-import ErrorMessage from '../../errorMessage/errorMessage';
-import gotService from '../../../services/gotService';
+import ItemList from '../itemList/itemList';
+import ErrorMessage from '../errorMessage/errorMessage';
+import gotService from '../../services/gotService';
 import {withRouter} from 'react-router-dom';
 class BookPage extends Component {
     

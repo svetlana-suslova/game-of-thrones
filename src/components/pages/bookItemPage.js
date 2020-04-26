@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
-import ItemDetails, {Field} from '../../itemDetails/itemDetails';
-import gotService from '../../../services/gotService';
+import ItemDetails, {Field} from '../itemDetails/itemDetails';
+import gotService from '../../services/gotService';
 import {Link} from 'react-router-dom';
+
 export default class BookItemPage extends Component {
     gotService = new gotService();
 
